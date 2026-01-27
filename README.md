@@ -1,7 +1,7 @@
 # 🛡️ Análisis Forense: LockBit 3.0 y el Caso Ayuntamiento de Sevilla
 
-**Autor:** [Tu Nombre]  
-**Asignatura:** Seguridad y Alta Disponibilidad  
+**Autor:** Luis María Chaves López
+**Asignatura:** Ciberdelitos y Regulación de la Ciberseguridad
 **Tema:** Análisis de Vectores de Ataque (Ransomware)
 
 ---
