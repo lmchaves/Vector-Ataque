@@ -64,3 +64,18 @@ Una vez el LB3.exe se ejecuta en la máquina de la víctima (Paciente Cero):
 3. **Impacto Irreversible**: Elimina las Shadow Copies (copias de seguridad de volumen) para impedir la restauración simple.
 
 [Fuente del repositorio filtardo](https://github.com/Tennessene/LockBit)
+
+## 3. 🛡️ Mitigación y Defensa (Blue Team)
+
+Para evitar la propagación masiva vista en el caso de Sevilla, se proponen las siguientes medidas basadas en las recomendaciones de INCIBE y CISA:
+#### Prevención (Kill Chain temprana)
+* **Deshabilitar Macros por GPO**: Configurar directivas de grupo para que los documentos de Office descargados de Internet no puedan ejecutar macros VBA. Esto neutraliza el código expuesto arriba.
+* **Autenticación Multifactor**: Obligatorio para todos los accesos remotos (VPN/RDP).
+
+#### Contención (Durante el ataque)
+* **Segmentación de Red**: Aislar las redes de usuarios (funcionarios) de los servidores críticos. Esto habría evitado que el ataque saltara a los 800 servidores.
+* **Backup Offline (3-2-1)**: LockBit borra los backups conectados. Es vital mantener copias "inmutables" o en cinta desconectada.
+
+> **Referencias Oficiales:**
+> * [Incibe](https://www.incibe.es/incibe-cert/blog/lockbit-acciones-de-respuesta-y-recuperacion)
+> * [CISA](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-075a)
