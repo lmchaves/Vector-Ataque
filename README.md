@@ -68,6 +68,11 @@ Una vez el LB3.exe se ejecuta en la máquina de la víctima (Paciente Cero):
 
 [Fuente del repositorio filtardo](https://github.com/Tennessene/LockBit)
 
+
+##### Demo Técnica y Análisis de Código
+* **[Dissecting LockBit 3.0 Builder (Josh Stroschein)](https://www.youtube.com/watch?v=sEibWbJIMss)**: **Análisis de la arquitectura del Builder.** El vídeo demuestra el ciclo completo de generación del malware: desde la **parametrización del ataque** (procesamiento de argumentos y archivos de configuración JSON) hasta la **compilación del payload**, mostrando cómo la herramienta inyecta las claves criptográficas públicas en el ejecutable final para personalizar la campaña.
+  * 📄 **[Documentación Técnica Completa (GitHub)](https://github.com/arosenmund/defcon32_dissecting_defeating_ransomwares_evasion/blob/main/part1-builder_review.md)**: Guía paso a paso del taller de ingeniería inversa, detallando las instrucciones de depuración y análisis estático mencionadas en el vídeo.
+
 ## 3. 🛡️ Mitigación y Defensa (Blue Team)
 
 Para evitar la propagación masiva vista en el caso de Sevilla, se proponen las siguientes medidas basadas en las recomendaciones de INCIBE y CISA:
