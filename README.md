@@ -1,4 +1,4 @@
-# 🛡️ Análisis Forense: LockBit 3.0 y el Caso Ayuntamiento de Sevilla
+ # 🛡️ Análisis Forense: LockBit 3.0 y el Caso Ayuntamiento de Sevilla
 
 **Autor:** Luis María Chaves López
 **Asignatura:** Ciberdelitos y Regulación de la Ciberseguridad
@@ -14,6 +14,9 @@ El **5 de septiembre de 2023**, el Ayuntamiento de Sevilla sufrió un ciberataqu
 * **Autoría:** El grupo **LockBit** reivindicó el ataque utilizando su variante **LockBit 3.0 (Black)**.
 * **Impacto:** Se estima el compromiso de **4.000 ordenadores y 800 servidores**. Se ejecutó un "Kill Switch" defensivo cortando la Intranet.
 * **Extorsión:** Se exigió un rescate inicial de **1.5 millones de euros** (elevado posteriormente a 5M€) bajo la amenaza de publicar datos sensibles (Doble Extorsión).
+
+* [Ciberataque al Ayto. de Sevilla (Málaga 24h)](https://www.youtube.com/watch?v=PcfV74RGUts): Este informativo resume las primeras horas del ataque, el impacto directo en el ciudadano y la firme postura del ayuntamiento de no ceder al chantaje económico.
+* [Análisis del Secuestro Informático](https://www.youtube.com/watch?v=X0E3zQ5ThmU): Entrevista técnica que detalla el impacto en la disponibilidad de los servicios críticos, mediante la **caída del Directorio Active** (AD), ya que Lockbit compromete el AD para desplegarse, al "matar" o cifrar los controladores de dominio, **ningún funcionario puede iniciar sesión**, y **cifrando la Bases de Datos SQL**, los programas que usan la policía (multas), el padrón o Hacienda no funcionan porque sus bases de datos subyacentes (.mdf, .ldf, .ora) han sido convertidas en archivos cifrados inútiles por el malware. La complejidad del Plan de Recuperación ante Desastres (DRP), incluyendo la sanitización de activos y la restauración desde copias offline.
 
 > **Fuentes del caso:**
 > * 📰 [LockBit: el grupo detrás del ciberataque al Ayuntamiento de Sevilla (Cuadernos de Seguridad)](https://cuadernosdeseguridad.com/2023/09/lockbit-ayuntamiento-sevilla/)
