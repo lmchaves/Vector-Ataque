@@ -87,3 +87,7 @@ Para evitar la propagación masiva vista en el caso de Sevilla, se proponen las 
 > **Referencias Oficiales:**
 > * [Incibe](https://www.incibe.es/incibe-cert/blog/lockbit-acciones-de-respuesta-y-recuperacion)
 > * [CISA](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-075a)
+
+## 4. 🌐 El Fin de LockBit: Operación Cronos
+> **📽️ Documental Técnico del Cierre:**
+> * **[Golpe a LockBit: Operación Cronos](https://www.youtube.com/watch?v=VVWWegy7mKw)**: Informe sobre la desarticulación de la infraestructura. Las autoridades explotaron una **vulnerabilidad crítica en PHP (CVE-2023-3824)** en los servidores no parcheados de la banda para inyectar *web shells*. Esto permitió exfiltrar las **claves privadas de descifrado** (liberadas posteriormente en *No More Ransom*) y exponer la identidad de los afiliados mediante técnicas de guerra psicológica en su propio panel de administración.
